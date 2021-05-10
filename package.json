@@ -1,0 +1,19 @@
+{
+  "name": "api-imdb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./src/server.js",
+  "scripts": {
+    "start": "node ./src/server.js",
+    "dev": "nodemon ./src/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "helmet": "^4.6.0",
+    "swagger-ui-express": "^4.1.6"
+  }
+}

@@ -1,0 +1,249 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "IMDB REST API",
+        "version": "1.0",
+        "description": "REST API para poder obteaner la informacion acerca de peliculas, series, actores y directores del cine.d"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:5000/api/v1"
+        }
+    ],
+    "paths": {
+        "/actors": {
+            "get": {
+                "description": "Obtener todos los actores de la DB",
+                "tags": ["Actors"],
+                "responses": {
+                    "200": {
+                        "description": "Lista de actores"
+                    }
+                }
+            },
+            "post": {
+                "description": "Crear un Actor",
+                "tags": ["Actors"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Actor"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Se ha creeado un actor satisfactoriamente"
+                    }
+                }
+            }
+        },
+        "/actors/{userId}":{
+            "get": {
+                "description": "Obtener un Actor",
+                "tags": ["Actors"], 
+                "parameters": [
+                    { 
+                        "name": "userId",
+                        "in": "path",
+                        "type": "integer",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Se ha obtenido satisfactoriamente"
+                    }
+                }
+            },
+            "put": {
+                "description": "Editar un Actor",
+                "tags": ["Actors"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Actor"
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    { 
+                        "name": "userId",
+                        "in": "path",
+                        "type": "integer",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Se ha editado el actor satisfactoriamente"
+                    }
+                }
+            },
+            "delete": {
+                "description": "Eliminar un actor",
+                "tags": ["Actors"],
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "type": "integer",
+                        "required": true
+                    }
+                ]
+            }
+        },
+        "/directors": {
+            "get": {
+                "description": "Obtener todos los directores de la DB",
+                "tags": ["Directors"],
+                "responses": {
+                    "200": {
+                        "description": "Lista de directores"
+                    }
+                }
+            },
+            "post": {
+                "description": "Crear un Director",
+                "tags": ["Directors"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Directors"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Se ha creeado un director satisfactoriamente"
+                    }
+                }
+            }
+        },
+        "/directors/{userId}":{
+            "get": {
+                "description": "Obtener un Director",
+                "tags": ["Directors"], 
+                "parameters": [
+                    { 
+                        "name": "userId",
+                        "in": "path",
+                        "type": "integer",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Se ha obtenido satisfactoriamente"
+                    }
+                }
+            },
+            "put": {
+                "description": "Editar un Director",
+                "tags": ["Directors"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Directors"
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    { 
+                        "name": "userId",
+                        "in": "path",
+                        "type": "integer",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Se ha editado el Director satisfactoriamente"
+                    }
+                }
+            },
+            "delete": {
+                "description": "Eliminar un Director",
+                "tags": ["Directors"],
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "type": "integer",
+                        "required": true
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Actor": {
+                "properties": {
+                    "first_name": {
+                        "type": "string",
+                        "description": "El nombre del actor"
+                    },
+                    "last_name": {
+                        "type": "string",
+                        "description": "El apellido del actor"
+                    },
+                    "dob": {
+                        "type": "string",
+                        "description": "Fecha de nacimiento del actor",
+                        "example": "YYYY/MM/DD"
+                    },
+                    "biography": {
+                        "type": "string"
+                    },
+                    "profile_photo": {
+                        "type": "string",
+                        "description": "URL de la imagen",
+                        "example": "https://m.media-amazon.com/images/M/MV5BMjA1MjE2MTQ2MV5BMl5BanBnXkFtZTcwMjE5MDY0Nw@@._V1_UX67_CR0,0,67,98_AL_.jpg"
+                    },
+                    "active": {
+                        "type": "boolean",
+                        "description": "Hace referencia si el actor esta activo o no"
+                    }
+                }
+            },
+            "Directors": {
+                "properties": {
+                    "first_name": {
+                        "type": "string",
+                        "description": "El nombre del director"
+                    },
+                    "last_name": {
+                        "type": "string",
+                        "description": "El apellido del director"
+                    },
+                    "dob": {
+                        "type": "string",
+                        "description": "Fecha de nacimiento del director",
+                        "example": "YYYY/MM/DD"
+                    },
+                    "biography": {
+                        "type": "string"
+                    },
+                    "profile_photo": {
+                        "type": "string",
+                        "description": "URL de la imagen",
+                        "example": "https://m.media-amazon.com/images/M/MV5BMjA1MjE2MTQ2MV5BMl5BanBnXkFtZTcwMjE5MDY0Nw@@._V1_UX67_CR0,0,67,98_AL_.jpg"
+                    },
+                    "active": {
+                        "type": "boolean",
+                        "description": "Hace referencia si el director esta activo o no"
+                    }
+                }
+            }
+        }
+    }
+}
